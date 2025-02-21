@@ -121,7 +121,7 @@ const get_single_user = async (req, res) => {
 
 const update_user = async (req, res) => {
     try {
-        const { phone_No, user_Name, email } = req.body;
+        const { phone_No, userName, email } = req.body;
        const user = await user_model.findById(req.user.id);
         if (!user) {
             throw new AppError(400, "user dose not exist");
@@ -129,7 +129,7 @@ const update_user = async (req, res) => {
 
         const update = await user_model.findByIdAndUpdate(user._id, {
             phone_No,
-            user_Name,
+            userName,
             email,
             // avatar: req.file.path
         }, { new: true });
