@@ -122,7 +122,7 @@ const get_single_user = async (req, res) => {
 const update_user = async (req, res) => {
     try {
         const { phone_No, user_Name, email } = req.body;
-        // const user = await user_model.find({ _id: req.user.id });
+       const user = await user_model.findById(req.user.id);
         if (!user) {
             throw new AppError(400, "user dose not exist");
         }
